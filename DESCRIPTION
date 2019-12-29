@@ -8,7 +8,7 @@ Maintainer: The package maintainer <yourself@somewhere.net>
 Description: The function _LRL_ is used to solve the linear regression for matrix responses with low-rank limit. And the function _EMg_ is used to solve the EM estimation of binary mixed Gaussian model.
 License:  GPL (>= 2)
 Encoding: UTF-8
-dependend: R >= 3.5.0
+Depends: R (>= 3.5.0)
 VignetteBuilder: knitr
 RoxygenNote: 7.0.2
 Imports:knitr,DAAG,bootstrap,caret,mvtnorm,rootSolve,Rcpp,ggplot2,microbenchmark,scales,Ball,MASS,boot,xtable,parallel
