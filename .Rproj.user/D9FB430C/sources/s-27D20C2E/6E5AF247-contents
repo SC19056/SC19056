@@ -1,0 +1,16 @@
+Package: SC19056
+Type: Package
+Title: A simple R package consisting of two functions, LRL and EMg.
+Version: 0.1.0
+Date: 2018-04-30
+Author: Anan Chen
+Maintainer: The package maintainer <yourself@somewhere.net>
+Description: The function _LRL_ is used to solve the linear regression for matrix responses with low-rank limit. And the function _EMg_ is used to solve the EM estimation of binary mixed Gaussian model.
+License:  GPL (>= 2)
+Encoding: UTF-8
+dependend: R >= 3.5.0
+VignetteBuilder: knitr
+RoxygenNote: 7.0.2
+Imports:knitr,DAAG,bootstrap,caret,mvtnorm,rootSolve,Rcpp,ggplot2,microbenchmark,scales,Ball,MASS,boot,xtable,parallel
+URL:https://github.com/Caa2019/SC19056
+BugReports:https://github.com/Caa2019/SC19056/issues

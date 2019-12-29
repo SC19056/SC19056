@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="author" content="19056" />
+
+<meta name="date" content="2019-12-28" />
+
+<title>Introduction to SC19056</title>
+
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#header {
+text-align: center;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Introduction to SC19056</h1>
+<h4 class="author">19056</h4>
+<h4 class="date">2019-12-28</h4>
+
+
+
+<div id="overview" class="section level1">
+<h1>Overview</h1>
+<p><strong>SC19056</strong> is a simple R package consisting of two functions, <em>LRL</em> and <em>EMg</em> . The function <em>LRL</em> is used to solve the linear regression for matrix responses with low-rank limit. And the function <em>EMg</em> is used to solve the EM estimation of binary mixed Gaussian model.</p>
+<div id="benchmarking-lrl" class="section level2">
+<h2>Benchmarking <em>LRL</em></h2>
+<p>The source R code for <em>LRL</em> is as follows:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>LRL&lt;-<span class="cf">function</span>(x,y,<span class="dt">lambda=</span><span class="dv">1</span>,<span class="dt">epsilon=</span><span class="fl">0.1</span>){</span>
+<span id="cb1-2"><a href="#cb1-2"></a>  Sc&lt;-<span class="cf">function</span>(B1,B0,a1){</span>
+<span id="cb1-3"><a href="#cb1-3"></a>    sc&lt;-<span class="kw">list</span>()</span>
+<span id="cb1-4"><a href="#cb1-4"></a>    <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>){</span>
+<span id="cb1-5"><a href="#cb1-5"></a>      sc&lt;-<span class="kw">c</span>(sc,<span class="kw">list</span>(B1[[i]]<span class="op">+</span>(a1<span class="dv">-1</span>)<span class="op">/</span>a1<span class="op">*</span>(B1[[i]]<span class="op">-</span>B0[[i]])))</span>
+<span id="cb1-6"><a href="#cb1-6"></a>    }</span>
+<span id="cb1-7"><a href="#cb1-7"></a>    <span class="kw">return</span>(sc)</span>
+<span id="cb1-8"><a href="#cb1-8"></a>  }</span>
+<span id="cb1-9"><a href="#cb1-9"></a></span>
+<span id="cb1-10"><a href="#cb1-10"></a>  Gradient&lt;-<span class="cf">function</span>(x,y,S,i){</span>
+<span id="cb1-11"><a href="#cb1-11"></a>    n&lt;-<span class="kw">dim</span>(x)[<span class="dv">1</span>]</span>
+<span id="cb1-12"><a href="#cb1-12"></a>    p&lt;-<span class="kw">matrix</span>(<span class="dv">0</span>,<span class="dv">64</span>,<span class="dv">64</span>)</span>
+<span id="cb1-13"><a href="#cb1-13"></a>    <span class="cf">for</span> ( j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>n){</span>
+<span id="cb1-14"><a href="#cb1-14"></a>      p&lt;-p<span class="op">+</span>x[j,i]<span class="op">^</span><span class="dv">2</span><span class="op">*</span>S[[i]]<span class="op">-</span>x[j,i]<span class="op">*</span>(y[[j]]<span class="op">-</span>x[j,<span class="dv">1</span>]<span class="op">*</span>S[[<span class="dv">1</span>]]<span class="op">-</span>x[j,<span class="dv">2</span>]<span class="op">*</span>S[[<span class="dv">2</span>]]<span class="op">-</span>x[j,<span class="dv">3</span>]<span class="op">*</span>S[[<span class="dv">3</span>]]</span>
+<span id="cb1-15"><a href="#cb1-15"></a>                                   <span class="op">-</span>x[j,<span class="dv">4</span>]<span class="op">*</span>S[[<span class="dv">4</span>]]<span class="op">+</span>x[j,i]<span class="op">*</span>S[[i]])</span>
+<span id="cb1-16"><a href="#cb1-16"></a>    }</span>
+<span id="cb1-17"><a href="#cb1-17"></a>    p<span class="op">/</span>n</span>
+<span id="cb1-18"><a href="#cb1-18"></a>  }</span>
+<span id="cb1-19"><a href="#cb1-19"></a>  QB&lt;-<span class="cf">function</span>(B_hat,x,y,<span class="dt">lambda=</span><span class="dv">0</span>){</span>
+<span id="cb1-20"><a href="#cb1-20"></a>    v&lt;-<span class="kw">list</span>()</span>
+<span id="cb1-21"><a href="#cb1-21"></a>    n&lt;-<span class="kw">dim</span>(x)[<span class="dv">1</span>]</span>
+<span id="cb1-22"><a href="#cb1-22"></a>    mse&lt;-<span class="kw">numeric</span>(n)</span>
+<span id="cb1-23"><a href="#cb1-23"></a>    <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>n){</span>
+<span id="cb1-24"><a href="#cb1-24"></a>      a&lt;-y[[i]]<span class="op">-</span>x[i,<span class="dv">1</span>]<span class="op">*</span>B_hat[[<span class="dv">1</span>]]<span class="op">-</span>x[i,<span class="dv">2</span>]<span class="op">*</span>B_hat[[<span class="dv">2</span>]]<span class="op">-</span>x[i,<span class="dv">3</span>]<span class="op">*</span>B_hat[[<span class="dv">3</span>]]<span class="op">-</span>x[i,<span class="dv">4</span>]<span class="op">*</span>B_hat[[<span class="dv">4</span>]]</span>
+<span id="cb1-25"><a href="#cb1-25"></a>      mse[i]&lt;-<span class="kw">sum</span>(a<span class="op">^</span><span class="dv">2</span>)</span>
+<span id="cb1-26"><a href="#cb1-26"></a>    }</span>
+<span id="cb1-27"><a href="#cb1-27"></a>    v<span class="op">$</span>MSE&lt;-<span class="kw">mean</span>(mse)<span class="op">/</span><span class="dv">2</span></span>
+<span id="cb1-28"><a href="#cb1-28"></a>    m&lt;-<span class="kw">length</span>(B_hat)</span>
+<span id="cb1-29"><a href="#cb1-29"></a>    d&lt;-<span class="kw">numeric</span>(m)</span>
+<span id="cb1-30"><a href="#cb1-30"></a>    <span class="cf">for</span> ( i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>m){</span>
+<span id="cb1-31"><a href="#cb1-31"></a>      d[i]&lt;-<span class="kw">sum</span>(<span class="kw">svd</span>(B_hat[[i]])<span class="op">$</span>d)</span>
+<span id="cb1-32"><a href="#cb1-32"></a>    }</span>
+<span id="cb1-33"><a href="#cb1-33"></a>    v<span class="op">$</span>Bnorm&lt;-lambda<span class="op">*</span><span class="kw">sum</span>(d)</span>
+<span id="cb1-34"><a href="#cb1-34"></a>    v<span class="op">$</span>QB&lt;-<span class="st"> </span>v<span class="op">$</span>MSE<span class="op">+</span>v<span class="op">$</span>Bnorm</span>
+<span id="cb1-35"><a href="#cb1-35"></a>    v<span class="op">$</span>norm&lt;-<span class="kw">sum</span>(d)</span>
+<span id="cb1-36"><a href="#cb1-36"></a>    <span class="kw">return</span>(v)</span>
+<span id="cb1-37"><a href="#cb1-37"></a>  }</span>
+<span id="cb1-38"><a href="#cb1-38"></a>  delta&lt;-<span class="kw">length</span>(y)<span class="op">/</span><span class="kw">max</span>(<span class="kw">svd</span>(<span class="kw">t</span>(x)<span class="op">%*%</span>x)<span class="op">$</span>d)</span>
+<span id="cb1-39"><a href="#cb1-39"></a>  B1&lt;-B0&lt;-<span class="kw">list</span>(<span class="kw">matrix</span>(<span class="dv">0</span>,<span class="dv">64</span>,<span class="dv">64</span>),<span class="kw">matrix</span>(<span class="dv">0</span>,<span class="dv">64</span>,<span class="dv">64</span>),</span>
+<span id="cb1-40"><a href="#cb1-40"></a>               <span class="kw">matrix</span>(<span class="dv">0</span>,<span class="dv">64</span>,<span class="dv">64</span>),<span class="kw">matrix</span>(<span class="dv">0</span>,<span class="dv">64</span>,<span class="dv">64</span>))</span>
+<span id="cb1-41"><a href="#cb1-41"></a>  a0&lt;-<span class="dv">0</span>;a1&lt;-<span class="dv">1</span>;C&lt;-<span class="dv">1</span></span>
+<span id="cb1-42"><a href="#cb1-42"></a>  <span class="cf">while</span> (<span class="kw">isTRUE</span>(C<span class="op">&gt;</span>epsilon)){</span>
+<span id="cb1-43"><a href="#cb1-43"></a>    S1&lt;-<span class="kw">Sc</span>(B1,B0,a1)</span>
+<span id="cb1-44"><a href="#cb1-44"></a>    B0&lt;-B1</span>
+<span id="cb1-45"><a href="#cb1-45"></a>    <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>){</span>
+<span id="cb1-46"><a href="#cb1-46"></a>      A&lt;-S1[[i]]<span class="op">-</span>delta<span class="op">*</span><span class="kw">Gradient</span>(x,y,S1,i)</span>
+<span id="cb1-47"><a href="#cb1-47"></a>      sv&lt;-<span class="kw">svd</span>(A)</span>
+<span id="cb1-48"><a href="#cb1-48"></a>      b&lt;-sv<span class="op">$</span>d<span class="op">-</span>lambda<span class="op">*</span>delta</span>
+<span id="cb1-49"><a href="#cb1-49"></a>      b&lt;-(<span class="kw">abs</span>(b)<span class="op">+</span>b)<span class="op">/</span><span class="dv">2</span></span>
+<span id="cb1-50"><a href="#cb1-50"></a>      Bp&lt;-sv<span class="op">$</span>u<span class="op">%*%</span><span class="kw">diag</span>(b)<span class="op">%*%</span><span class="kw">t</span>(sv<span class="op">$</span>v)</span>
+<span id="cb1-51"><a href="#cb1-51"></a>      B1[[i]]&lt;-Bp</span>
+<span id="cb1-52"><a href="#cb1-52"></a>    }</span>
+<span id="cb1-53"><a href="#cb1-53"></a>    a1&lt;-(<span class="dv">1</span><span class="op">+</span><span class="kw">sqrt</span>(<span class="dv">1</span><span class="op">+</span>(<span class="dv">2</span><span class="op">*</span>a1)<span class="op">^</span><span class="dv">2</span>))<span class="op">/</span><span class="dv">2</span></span>
+<span id="cb1-54"><a href="#cb1-54"></a>    C&lt;-<span class="kw">abs</span>(<span class="kw">QB</span>(B1,x,y,lambda)<span class="op">$</span>QB<span class="op">-</span><span class="kw">QB</span>(B0,x,y,lambda)<span class="op">$</span>QB)</span>
+<span id="cb1-55"><a href="#cb1-55"></a></span>
+<span id="cb1-56"><a href="#cb1-56"></a>  }</span>
+<span id="cb1-57"><a href="#cb1-57"></a>  <span class="kw">return</span>(B1)</span>
+<span id="cb1-58"><a href="#cb1-58"></a>}</span></code></pre></div>
+<p>Here, we give a example with the data <em>xy</em> in R package <strong>SC19056</strong>.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">data</span>(xy)</span>
+<span id="cb2-2"><a href="#cb2-2"></a>x&lt;-xy<span class="op">$</span>X</span>
+<span id="cb2-3"><a href="#cb2-3"></a>y&lt;-xy<span class="op">$</span>Y</span>
+<span id="cb2-4"><a href="#cb2-4"></a>B&lt;-xy<span class="op">$</span>B</span>
+<span id="cb2-5"><a href="#cb2-5"></a>B_hat&lt;-<span class="kw">LRL</span>(x,y)</span>
+<span id="cb2-6"><a href="#cb2-6"></a>image_B&lt;-<span class="cf">function</span>(B_hat){</span>
+<span id="cb2-7"><a href="#cb2-7"></a>  <span class="kw">image</span>(B_hat[[<span class="dv">1</span>]])</span>
+<span id="cb2-8"><a href="#cb2-8"></a>  <span class="kw">image</span>(B_hat[[<span class="dv">2</span>]])</span>
+<span id="cb2-9"><a href="#cb2-9"></a>  <span class="kw">image</span>(B_hat[[<span class="dv">3</span>]])</span>
+<span id="cb2-10"><a href="#cb2-10"></a>  <span class="kw">image</span>(B_hat[[<span class="dv">4</span>]])</span>
+<span id="cb2-11"><a href="#cb2-11"></a>}</span></code></pre></div>
+<p>We use the function <em>image_B</em> to show the real parameter <em>B</em> and the LRL estimation <em>B_hat</em>.</p>
+<div id="real-parameter-b" class="section level3">
+<h3>Real parameter <em>B</em>:</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">image_B</span>(B)</span></code></pre></div>
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASAAAAEgCAMAAAAjXV6yAAAAS1BMVEUAAAAAADoAAGYAOjoAOpAAZrY6AAA6ADo6kNtmAABmtv99ACWQOgCQZgCQ2/+2ZgC2///bkDrb////tmb/25D//7b//8j//9v////uv1HSAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAEWUlEQVR4nO3c61KbQABAYWyN1WpNabTy/k9aLomWhHCA7HI93w+nzDjbcIZrFkwytUqm/gBzZyBgIGAgYCBgIGAgYCBgIGAgYCBgIGAgYCBgIGAgYCBgIGAgYCBgIGAgYCBgIGAgYCBgIGAgYCBgIGAgYCBgIGAgYCBgIGAgYCBgIGAgYCBgIGAgYCBgIGAgYCBgIGAgYCBgIGAgYCBgIGAgYCBgIGAgYCBgIGAgYCBgIGAgYCBgIGAgYCBgIGAgYCBgIGAgYCBgIGAgYCAQONDfpei83mECJSdTr3dnIwf6NPV6d2YgYCBgIGAgYCBgIGAgYCBgIGAgECnQPkl2Hy/5PddPAzVJ7//kjXZZ9v70aKBLHy95lsPd6zGVgc69P+V71uHb7+z000B1bkHk8xhUpjLQJc9it5p6vTszEIgdKPUs1ouzGl1Nvd6dGQhEClSe4nNXjkCbD5Qmx+vDQ+KFYoP/rp9HutV4/hJ45Hg3q5WRblYXFsgtiKSne7CxjkFLC5TvZNVZ7Mr2YyAUeDUMBAwEDAQMBAwEDAQMBAwEDAQMBAwEVhMo1qzGagJ9CrwaBgIGAgYCBgIGAlsO9ByDgQxkIAMZKHt7uPaQ68YDneZVW54Q2nag05R8kC2ob8XAI0ebmy9m5Q3UYn/3aqBWafJooFZvD98N1Orj5eq7LAYigVdjuYFGeldjuYHOR3FWo6PAq2EgsLhAY7+rsbRAo7+rsbBAPmkPfFcDuAUR39Ugvqtxq8CrYSBgIGAgYCBgIGAgYKDJGAgYCBgIGAisZFYjHrcgYCBgIGAgYCBgIGAgYCBgIGAgYCCwksdf4lnJ4y/xrOThhXhW8vhLPG5BYCWPv8Szksdf4vE6CBgIrORdjXic1QBT7WLJYkwUqMOAI/xCiCH6/2YBb1Y3HohvVrcdqMOtxrYDdbhZ3XYgtyDCN6sbD8Q3q1sPFGLArQdaGwMBAwEDAQMBAwEDAQMBAwEDAQMBAwEDgVCBDkly99q4MGiE3L7lO5UuQ6RJcv3PGXYXKNAh/2CH04erLQwaoVhu+9KpwxBpsRCgUJhA1Zex+93lwqARsvKrub6Bzj7Erv+HaBImUPXXXY8T9rWFQSMU/7r/1TdQbYi5BfpRbNjHqY7awqARysXex6D6EPPaxao9/7j/1xYGjVDuLb0Dnf2/g84Ul+YZqJhVujHQPt+S3h6uTr50NstdrFy4bRcbdCBsMsuDdHp8RKXfEaQ2xKDNuMlcT/MDtqDaEFWtnptxk9leKA64kq4NMa9jULlXFB+tuvxIh5xAaiNkg241akPs83309j7erBIDAQMBAwEDAQMBAwEDAQMBAwEDAQMBAwEDAQMBAwEDAQMBAwEDAQMBAwEDAQMBAwEDAQMBAwEDAQMBAwEDAQMBAwEDAQMBAwEDAQMBAwEDAQMBAwEDAQMBAwEDAQMBAwEDAQMBAwEDAQMBAwEDAQMBAwEDAQMBAwEDAQOBf5B6UUaiW4TDAAAAAElFTkSuQmCC" /><!-- --><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASAAAAEgCAMAAAAjXV6yAAAAS1BMVEUAAAAAADoAAGYAOjoAOpAAZrY6AAA6ADo6kNtmAABmtv99ACWQOgCQZgCQ2/+2ZgC2///bkDrb////tmb/25D//7b//8j//9v////uv1HSAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAENUlEQVR4nO3c61KbQABAYWyN1daa0mjN+z9pucUpCXCWhbjbcM4Pp8w4W/LNcgtgcbTJitQrkHsCQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQSsD/flfCv7c6wAVp1J/7uA+Geij1J87OIEggSCBIIEggSCBIIEggSCBIIGgKwHti2L3/lxdc30XaKjy/ndltDse354eBbrs/bliOdy9dFQCnff2VG1Zhy+/jqefAvVzBlEf+6CGSqDLPIotLfXnDk4g6NpApUexWXlXI7TUnzs4gaArATWH+KqRPdDmgcqiOz88FJ4oDvTP+fPyS40f1ygxUHOx2rb8YvUWgZxBVHm6BlthH3STQNVG1h7FRuaPQJhAAgkkkEACCSSQQAIJJJBAnwYUcVdjW0AfCSSQQAIJJJBAAgkkkEACxQK9Pow95LpxoNN91YknhLYNdLol7wwa7e2pvisv0ET7uxeBJiuLR4Eme334KtBk78+j77IIRAnUtfxdjRsHOh/FuxqBCSTQZCu+q3GTQGu+q3GLQD5pD/muBuQMonxXg/JdjaUJJJBAAgkkkEACpU4gSCBIIEggKP+7GolzBkECQQJBAkECQQJBAkECQQJBAkECQfk//pK4/B9/SVz+Dy8kLv/HXxLnDILyf/wlcfk//pI4z4MggaD839VInHc1oFSbWPHflAgoYMBP+IU1hpj/m3V4sbpxIL5Y3TZQwKXGtoECLla3DeQMovhideNAfLG6daA1Btw60K0lECQQJBAkECQQJBAkECQQJBAkECQQJBC0FtChKO5eBheiRqjaT3ynEjJEWRTjf84wvJWADtWKHU4r11uIGqFenvrSKWCIsl5YQWgdoPbL2P3uciFqhGPz1dxcoLOV2M1fiaHWAWr/umt3w763EDVC/a/7n3OBekPkBvStntjdrY7eQtQIzeLsfVB/iLw2sXbL77b/3kLUCM3WMhvo7P+NOlJclidQfVdpIdC+mkmvD6M3X4LLchNrFpZtYlE7wqGy3EmX3SMq8/YgvSGipvFQuR7mI2ZQb4hWa+Y0HirbE8WIM+neEHntg5qtol619vSjjDmA9EY4Rl1q9IbYV9voch8vVimBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIGgv02ftWlRprteAAAAAElFTkSuQmCC" /><!-- --><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASAAAAEgCAMAAAAjXV6yAAAAS1BMVEUAAAAAADoAAGYAOjoAOpAAZrY6AAA6ADo6kNtmAABmtv99ACWQOgCQZgCQ2/+2ZgC2///bkDrb////tmb/25D//7b//8j//9v////uv1HSAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAEtklEQVR4nO3c63KaQABAYdImaVPTWGvS+P5PWvA2QcUDywILe86PTpmxW/1muQlY7OxuxdRvIPUEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEgiID/ZtLrT93HKDi1NSfu3UjA52b+nO3TiBIIEggSCBIIEggSCBIIEggSCBoIKB1UTx9vpbnXL8EutXm8W9p9LTbfbz8FOi6z9eSZfvwdqQS6LKPl3LN2n77szv9KVA9ZxB13gbtqQS6bi57sdWKXpH5cZBAza0O0cuGBtokuxdLBOhylBSuaqy+Ri/OcRUT6G6rVQpA+118WcMWaBqg1a3oHw10oFgcjw+3RUIHiukAfTl+TuRU46bNdED7k9VDiZysJgaU1Axqtpl0G3ScQglsg5IEKleyw16sYf6MBgQ60wFhKdgIJFA/G4EE6kWTIVB3HoEECqcRSKCeNgJlD9TTJkWgaFc1YtikCHROoCGBoukIlB9QTBuB8gKKTrMgoIFsBMoDaEgdgRYONLDN9EDvz003uWYOdLqueucOoUR4pppBx0vyzqDGPl6qq/IC3Wn98NYbaAylyYCq2/AEutv78/cYQAMzTQhU3eoqUGhdgQZTmhoo9rMaiwO6HKXvVY2lA50LBYquJFCaQCM8qzFroDGe1Zgz0Hh32s8UaOxnNWYHNPazGrMDGv9ZjbkBjf6sxuyAsMhA4UwCCdRPKT+gjkoCCdTPSCCB7iVQmwSCBGqVQNA8gCb9Bao5AJ0bA+QygVolUJsEggRqk0CQQDESCBIIEggSCJrv7S8jNd/bX0ZqETcvDNkibn8ZMmcQtJDbX4ZrIbe/DJfHQZBA0Nye1Ri9nK5qBDXVKlbMpomAWgw4wgtiDNH9lVV4spo5EJ+s5g3U4lQjb6AWJ6t5AzmDKD5ZzRyIT1ZzB4oxYO5AS0sgSCBIIEggSCBIIEggSCBIIEggSCBIICgW0LYoHt5uLgSNULa+851KmyE2RdH8c4btiwS0Ld/Y9vTmagtBI1TL9750ajHEplqIIBQH6PBl7PrpeiFohN3+q7muQBdv4qn7m7hVHKDDr7seL9jXFoJGqP72+LsrUG2I1IB+VBP7eKmjthA0wn6x8zaoPkRaq9hhzT+u/7WFoBH2a0tnoIv/N2hPcV2aQNVVpZ5A63ImvT83XnxpXZKr2H6h3yoWtCG8VZIb6c3xFpVuW5DaEEHT+Fap7uYDZlBtiINWx2l8q2QPFAOOpGtDpLUN2q8V1Vs7HH5sQnYgtRF2QacatSHW5Tra38eTVUogSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCDoP5K10+t776XmAAAAAElFTkSuQmCC" /><!-- --><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASAAAAEgCAMAAAAjXV6yAAAAS1BMVEUAAAAAADoAAGYAOjoAOpAAZrY6AAA6ADo6kNtmAABmtv99ACWQOgCQZgCQ2/+2ZgC2///bkDrb////tmb/25D//7b//8j//9v////uv1HSAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAFFElEQVR4nO3c63KbOABAYdJtsmmTxut12vj9n7TgSybY4CNAwkic86NTZjKy/Y24GXC1t5tV934DS08gSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggKDLQn1wK/txxgKpz9/7cwc0M9Nm9P3dwAkECQQJBAkECQQJBAkECQQJBAkGJgDZV9fjxWp9z/RSoq+33/2ujx/3+949nga77eK1Zdg9vJyqBLvv9o16zdt/+25//FaidM4j63AYdqGICvTTFBKCy2ou9fC0yRF9ZHQcJBL1cFVmjo9RA25h7sRKBLkeZdFXjGig9U+armECt+oBSQiUCOuzi63q2QImAUlAlOlCsTseHuyrmgWIxQF+On6OeaoQDnY2mm6U7WT0W9WS1GKBUM2ioUY/a/YHqbdBpCsXdBpUDVK9kx71Yz/y5G9Bwo6yOg6ISBWoJJNBNJoHWBxTLSKBgoJteApUIFGTEf0Q2ApUMNNuWWqBigaYbBb1GVlc1IhMtEegzgeYBmmQkkEBTjALHFmgNQMOJwkfOFajzM0ZT+ZJAUK5A14WuVwOhBFoHEOuMXeWSAr0/9d3kunKg83XVG3cILQEoyCjNDDpdkk8/g9qfMR+geg41V+UFutHm4S050OUHHA7ESuk20tvqWaCbvT/9kxLo8pNN0um3Srmb/3jtfZZFIGo6TwydBVzViPqsRr9WvkCXoyT5BaqCgD6bCYj0BFoqUJpnNQbqDGhuoETPahQDlPBO+5g6Qa+Q1bMaxQA5g6h0z2pE4gl/jdye1SgFCBNIoFyBBr5GvkBDSVZ36VmgyEAjE2j1QBNfpmig6S8iEJYrUHKYcwJBuV7VmEfnT4kzKIbKlwoDikHSLlega6LpI3YmEFQI0PTh+hIIKgJo+mD9CQTlCzRTAkECQfnf/pK4/G9/SVzmNy+kL/PbX9LnDIKyvv1ljrK+/WWOPA6CBIKKeFYjZble1Zite61iVTbdCShgwBn+IMYQw/+yCU9WVw7EJ6vrBgo41Vg3UMDJ6rqBnEEUn6yuHIhPVtcOFGPAtQOVlkCQQJBAkECQQJBAkECQQJBAkECQQJBAUCygXVU9vHUujBqhbnPjO5WQIbZV1f9zhuFFAtrVb2x3fnOthVEjNMu3vnQKGGLbLEQQigN0/DJ283i9MGqE/eGruaFAF2/icfib6CoO0PHXXU8X7FsLo0Zo/vf911Cg1hBLA/q3mdinSx2thVEjHBYHb4PaQyxrFTuu+af1v7UwaoTD2jIY6OJ1R+0prlsmUHNVaSLQpp5J70+9F1+CW+QqdliYtoqN2hB2tciN9PZ0i8qwLUhriFHTuKul7uZHzKDWEEetgdO4q8UeKI44km4Nsaxt0GGtaN7a8fBjO2YH0hphP+pUozXEpl5Hp/t4skoJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkE/QWbz95RKqMZ3wAAAABJRU5ErkJggg==" /><!-- --></p>
+</div>
+<div id="estimation-b_hat." class="section level3">
+<h3>estimation <em>B_hat</em>.</h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">image_B</span>(B_hat)</span></code></pre></div>
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASAAAAEgCAMAAAAjXV6yAAAAaVBMVEUAAAAAADoAAGYAOjoAOpAAZrY6AAA6ADo6kNtmAABmtv99ACWQOgCQZgCQ2/+iBwa2ZgC2///DIgDbkDrb///hPADtYgDyhAD1oQD3ujz40HT75Jr/tmb/25D/9Lf//7b//8j//9v///+JjdLHAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAEwUlEQVR4nO3c6XaaQABAYdIm6ZamVqrWxGy+/0MWRklKol7AQRDu9yOntHaEe1hEIMlaByVdz0DfGQgYCBgIGAgYCBgIGAgYCBgIGAgYCBgIGAgYCBgIGAgYCBgIGAgYCBgIGAgYCBgIGAgYCBgIGAgYCBgIGAgYCBgIGAgYCBgIGAgYCBgIGAgYCBgIGAgYCBgIGAgYCBgIGAgYCBgIGAgYCBgIGAgYCBgIGAgYCBgIGAgYCBgIGAgYCBgIGAgYCBgIGAgYCBgIGAgYCBgIGAhEDvT3XFRe7jiBkkLXy13ZiQO96nq5KzMQMBAwEDAQMBAwEDAQMBAwEDAQaCnQJEmuXm6yc67vBtolvfyTNbpar5++fTXQRy83WZbVxe02lYHee/qWbVmrT7/XxU8DlbkGkdd9UEhloI88ih2r6+WuzECg7UCpR7FavKpRVdfLXZmBQEuBwiE+s2cPNPpAabL9fLhK/KC4w3+fn090qvHjTeSR2ztZ3TjRyeqZBXINImlxDnaqfdC5Bco2ss1RbM/6YyAUeTEMBAwEDAQMBAwEDAQMBAwEDAQMBAwEBhOorasagwn0KvJiGAgYCBgIGAgYCIw50I82GMhABjKQgdYP1/tuch15oOK66oE7hMYdqLgkH2UNqlsx8sitXZvPr8ob6IDJxa2BDkqTrwY66OH6s4EOernZ+yyLgUjkxTjfQCd6VuN8A70fxasaFUVeDAOBswt06mc1zi3QyZ/VOLNA3mkPfFYDuAYRn9UgPqtxrMiLYSBgIPDrTeSRBxLINQgYCBgIGKgzBgIGAgYCBgIDuarRHtcgYCBgIGAgYCBgIGAgYCBgIGAgYCAwkNtf2jOQ21/aM5CbF9ozkNtf2uMaBAZy+0t7BnL7S3v8HAQMBLp6VuP5+Tm8/3K5LGZlscgm7u7uFov5fD6bzebzRf5X2Y/wj9PpdJH/02Z6Og2vmAXLrfl8GV4fJu7v78Nwy+U0vHg2yyay/3mXe3x8zN9oUcxAeGV472Ks+62urmoYqGqp3usoUIUBT/CCGEPUf2UOT1ZHHohPVscdqMKpxrgDVThZHXcg1yDCJ6sjD8Qnq2MPFGPAsQcaGgMBAwEDAQMBAwEDAQMBAwEDAQMBAwEDgViBVklycbtzotEImcmB71SqDJEmyf5fZ1hdpECrbMZWxcyVJhqNkE8f+tKpwhBpPhGhUJxAmy9jJ1cfJxqNsA5fzdUN9G4mrurPxC5xAm1+u+v2gn1potEI+Z8uf9YNVBqib4G+5Cv29lJHaaLRCGGy9j6oPES/NrHNlr/d/ksTjUYIW0vtQO/et9GR4qN+BsqvKh0ZaJKtSQ/Xey++VNbLTSxMHLeJNdoR7tLLnXS6vUWl3h6kNESj1XiXvh7mG6xBpSE2tWquxrv09oNig0/SpSH6tQ8KW0U+a5uPH2mTA0hphHWjU43SEJNsGz2+jyerxEDAQMBAwEDAQMBAwEDAQMBAwEDAQMBAwEDAQMBAwEDAQMBAwEDAQMBAwEDAQMBAwEDAQMBAwEDAQMBAwEDAQMBAwEDAQMBAwEDAQMBAwEDAQMBAwEDAQMBAwEDAQMBAwEDAQMBAwEDAQMBAwEDAQMBAwEDAQMBAwEDAQOAf6W174NL0pCwAAAAASUVORK5CYII=" /><!-- --><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASAAAAEgCAMAAAAjXV6yAAAAaVBMVEUAAAAAADoAAGYAOjoAOpAAZrY6AAA6ADo6kNtmAABmtv99ACWQOgCQZgCQ2/+iBwa2ZgC2///DIgDbkDrb///hPADtYgDyhAD1oQD3ujz40HT75Jr/tmb/25D/9Lf//7b//8j//9v///+JjdLHAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAEyklEQVR4nO3ccVuaWgCAcdpdbe228uqMq1ktv/+H3OGIPVHKC4gdBu/7R4W5M/w9gCBQtrXastQzMPQEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEgnoG+v9vqfHr7gco25f6dTfuk4FeS/26GycQJBAkECQQJBAkECQQJBAkECQQdCagWZZdvtyEY64fAh1q8fVXMLrcbp+vvwv0sZebwLK5uC2pBHrf83VYszZf/tvuvwpUzSWIet0GRSqBPua72Kmlft2NEwg6N9DCd7FWeVajaalfd+MEgs4EFN/iQ0e2QJMHWmTl/uEmc0fxQG/2n08/1Pi37O7u7s33cuLN461KDBQPVnedfrA6RqBPWIJOLDFQ2AaVi1AP26BRAoWVbPcudmT56WkVK7/8fatYg9oD9ZpAAgkkkEACCTREoHHsKAqUDqiXBBJopEAdzmpMC+g1gQQSSCCBBBJIIIEEEkigrkCPV8cucp040P68as0VQtMG2p+Sdwk62vN1cVZeoJpmF7cC1bbIvgtU2+PVPwLV9nJz9F4WgSiByk6/V2PkQO9H8axGwwQSqLYe79UYJVCf92qMEegsV9qPCegs92qMCcgliDrHvRqjAjrHvRrjAsIEEkgggQQSSCCBUicQJBAkECQQNPyzGolzCYIEggSCBIIEggSCBIIEggSCBIIEgoZ/+Uvihn/5S+KGf/FC4oZ/+UviXIKg4V/+krjhX/6SOPeDIIGghPdqrFb3sfX6IZbny+VyPp8vl+HB8PviN6FlnJ7PV6tV+DHPn56ewi/X6zzPV0XxSeGRML1eh+n4L8P3p6Lw4P19Hot/Hi5UjJHHQeNw9/H3Dw/rOBu/f+/mKc/DM8PjSc9qCNRIavAlAmow4Cc8oY8h2j+zCA9WJw7EB6vTBmpwqDFtoAYHq9MGcgmi+GB14kB8sDp1oD4GnDrQ2BIIEggSCBIIEggSCBIIEggSCBIIEggSCOoLaJNlF7cHJzqNEJrVfKbSZIhFlh3/c4bN6wloE2Zss5+5ykSnEYrpug+dGgyxKCZ6EOoHaPdh7Ozy40SnEbbxo7m2QO9m4rL9TByqH6DdX3ctT9hXJjqNUPz09WdboMoQQwP6VizY5amOykSnEeJk621QdYhhrWK7Nb9c/ysTnUaIa0troHf/b6d3io8NE6g4q3Qi0CwsSY9XR0++NG6Qq1icOG0V67QhPNQgN9KL8hKVdluQyhCdFuNDDfVtvsMSVBlip9VyMT7UYHcUO+xJV4YY1jYorhXFrO12PxZd3kAqI2w7HWpUhpiFdfR0Hw9WKYEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggaA/PW3DM4ryaekAAAAASUVORK5CYII=" /><!-- --><img src="data:image/png;base64,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" /><!-- --><img src="data:image/png;base64,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" /><!-- --> ## Benchmarking <em>EMg</em></p>
+<p>The source R code for <em>EMg</em> is as follows:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>EMg&lt;-<span class="cf">function</span>(e1,X,<span class="dt">t_max=</span><span class="dv">100</span>){</span>
+<span id="cb5-2"><a href="#cb5-2"></a>  f&lt;-<span class="cf">function</span>(e,X){</span>
+<span id="cb5-3"><a href="#cb5-3"></a>    sigma1&lt;-<span class="kw">as.matrix</span>(e<span class="op">$</span>sigma[[<span class="dv">1</span>]])</span>
+<span id="cb5-4"><a href="#cb5-4"></a>    sigma2&lt;-<span class="kw">as.matrix</span>(e<span class="op">$</span>sigma[[<span class="dv">2</span>]])</span>
+<span id="cb5-5"><a href="#cb5-5"></a>    M&lt;-<span class="kw">matrix</span>(<span class="dv">0</span>,<span class="kw">dim</span>(X)[<span class="dv">1</span>],<span class="kw">dim</span>(X)[<span class="dv">2</span>])</span>
+<span id="cb5-6"><a href="#cb5-6"></a>    <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">dim</span>(X)[<span class="dv">1</span>]){</span>
+<span id="cb5-7"><a href="#cb5-7"></a>      X1&lt;-X[i,]</span>
+<span id="cb5-8"><a href="#cb5-8"></a>      m1&lt;-<span class="kw">dmvnorm</span>(X1,e<span class="op">$</span>mu[[<span class="dv">1</span>]],sigma1)</span>
+<span id="cb5-9"><a href="#cb5-9"></a>      m2&lt;-<span class="kw">dmvnorm</span>(X1,e<span class="op">$</span>mu[[<span class="dv">2</span>]],sigma2)</span>
+<span id="cb5-10"><a href="#cb5-10"></a>      M[i,<span class="dv">1</span>]&lt;-e<span class="op">$</span>lambda[<span class="dv">1</span>]<span class="op">*</span>m1</span>
+<span id="cb5-11"><a href="#cb5-11"></a>      M[i,<span class="dv">2</span>]&lt;-e<span class="op">$</span>lambda[<span class="dv">2</span>]<span class="op">*</span>m2</span>
+<span id="cb5-12"><a href="#cb5-12"></a>    }</span>
+<span id="cb5-13"><a href="#cb5-13"></a>    <span class="kw">return</span>(M)</span>
+<span id="cb5-14"><a href="#cb5-14"></a>  }</span>
+<span id="cb5-15"><a href="#cb5-15"></a>  n&lt;-<span class="kw">dim</span>(X)[<span class="dv">1</span>]</span>
+<span id="cb5-16"><a href="#cb5-16"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>t_max){</span>
+<span id="cb5-17"><a href="#cb5-17"></a>    p&lt;-<span class="kw">f</span>(e1,X)</span>
+<span id="cb5-18"><a href="#cb5-18"></a>    p1&lt;-p<span class="op">/</span><span class="kw">apply</span>(p,<span class="dv">1</span>,sum)</span>
+<span id="cb5-19"><a href="#cb5-19"></a>    e1<span class="op">$</span>lambda&lt;-<span class="kw">c</span>(<span class="kw">sum</span>(p1[,<span class="dv">1</span>])<span class="op">/</span>n,<span class="kw">sum</span>(p1[,<span class="dv">2</span>])<span class="op">/</span>n)</span>
+<span id="cb5-20"><a href="#cb5-20"></a>    e1<span class="op">$</span>mu&lt;-<span class="kw">list</span>(<span class="kw">as.vector</span>(p1[,<span class="dv">1</span>]<span class="op">%*%</span>X<span class="op">/</span><span class="kw">sum</span>(p1[,<span class="dv">1</span>])),<span class="kw">as.vector</span>(p1[,<span class="dv">2</span>]<span class="op">%*%</span>X<span class="op">/</span><span class="kw">sum</span>(p1[,<span class="dv">2</span>])))</span>
+<span id="cb5-21"><a href="#cb5-21"></a>    q1&lt;-<span class="kw">apply</span>(X,<span class="dv">1</span>,<span class="cf">function</span>(X) X<span class="op">-</span>e1<span class="op">$</span>mu[[<span class="dv">1</span>]])</span>
+<span id="cb5-22"><a href="#cb5-22"></a>    sigma1&lt;-q1<span class="op">%*%</span><span class="kw">diag</span>(p1[,<span class="dv">1</span>])<span class="op">%*%</span><span class="kw">t</span>(q1)<span class="op">/</span><span class="kw">sum</span>(p1[,<span class="dv">1</span>])</span>
+<span id="cb5-23"><a href="#cb5-23"></a>    q2&lt;-<span class="kw">apply</span>(X,<span class="dv">1</span>,<span class="cf">function</span>(X) X<span class="op">-</span>e1<span class="op">$</span>mu[[<span class="dv">2</span>]])</span>
+<span id="cb5-24"><a href="#cb5-24"></a>    sigma2&lt;-q2<span class="op">%*%</span><span class="kw">diag</span>(p1[,<span class="dv">2</span>])<span class="op">%*%</span><span class="kw">t</span>(q2)<span class="op">/</span><span class="kw">sum</span>(p1[,<span class="dv">2</span>])</span>
+<span id="cb5-25"><a href="#cb5-25"></a>    e1<span class="op">$</span>sigma&lt;-<span class="kw">list</span>(sigma1,sigma2)</span>
+<span id="cb5-26"><a href="#cb5-26"></a>  }</span>
+<span id="cb5-27"><a href="#cb5-27"></a>  <span class="kw">return</span>(e1)</span>
+<span id="cb5-28"><a href="#cb5-28"></a>}</span></code></pre></div>
+<p>About the <em>EMg</em> ,dataset <em>faithful</em> is a example.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">library</span>(mvtnorm)</span>
+<span id="cb6-2"><a href="#cb6-2"></a>e1&lt;-<span class="kw">list</span>()</span>
+<span id="cb6-3"><a href="#cb6-3"></a>e1<span class="op">$</span>mu&lt;-<span class="kw">list</span>(<span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">62</span>),<span class="kw">c</span>(<span class="dv">6</span>,<span class="dv">85</span>))</span>
+<span id="cb6-4"><a href="#cb6-4"></a>e1<span class="op">$</span>lambda&lt;-<span class="kw">c</span>(.<span class="dv">3</span>,.<span class="dv">7</span>)</span>
+<span id="cb6-5"><a href="#cb6-5"></a>e1<span class="op">$</span>sigma&lt;-<span class="kw">list</span>(<span class="kw">diag</span>(<span class="dv">2</span>),<span class="kw">diag</span>(<span class="dv">2</span>))</span>
+<span id="cb6-6"><a href="#cb6-6"></a>e_hat&lt;-<span class="kw">EMg</span>(e1,<span class="kw">as.matrix</span>(faithful),<span class="dv">100</span>)</span>
+<span id="cb6-7"><a href="#cb6-7"></a>e_hat</span></code></pre></div>
+<pre><code>## $mu
+## $mu[[1]]
+## [1]  2.036388 54.478516
+## 
+## $mu[[2]]
+## [1]  4.289662 79.968115
+## 
+## 
+## $lambda
+## [1] 0.3558729 0.6441271
+## 
+## $sigma
+## $sigma[[1]]
+##            eruptions    waiting
+## eruptions 0.06916767  0.4351676
+## waiting   0.43516762 33.6972821
+## 
+## $sigma[[2]]
+##           eruptions    waiting
+## eruptions 0.1699684  0.9406093
+## waiting   0.9406093 36.0462113</code></pre>
+</div>
+</div>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
