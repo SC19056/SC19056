@@ -10,7 +10,7 @@
 #' data(xy)
 #'x<-xy$X
 #'y<-xy$Y
-#'B_hat<-LRL(x,Y)
+#'B_hat<-LRL(x,y)
 #' }
 #' @export
 LRL<-function(x,y,lambda=1,epsilon=0.1){
