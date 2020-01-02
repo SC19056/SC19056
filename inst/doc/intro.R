@@ -59,7 +59,8 @@ LRL<-function(x,y,lambda=1,epsilon=0.1){
 }
 
 ## -----------------------------------------------------------------------------
-data(xy)
+library(SC19056)
+data("xy")
 x<-xy$X
 y<-xy$Y
 B<-xy$B

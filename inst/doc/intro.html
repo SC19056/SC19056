@@ -12,7 +12,7 @@
 
 <meta name="author" content="19056" />
 
-<meta name="date" content="2019-12-28" />
+<meta name="date" content="2020-01-02" />
 
 <title>Introduction to SC19056</title>
 
@@ -305,7 +305,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 
 <h1 class="title toc-ignore">Introduction to SC19056</h1>
 <h4 class="author">19056</h4>
-<h4 class="date">2019-12-28</h4>
+<h4 class="date">2020-01-02</h4>
 
 
 
@@ -374,17 +374,18 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <span id="cb1-57"><a href="#cb1-57"></a>  <span class="kw">return</span>(B1)</span>
 <span id="cb1-58"><a href="#cb1-58"></a>}</span></code></pre></div>
 <p>Here, we give a example with the data <em>xy</em> in R package <strong>SC19056</strong>.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">data</span>(xy)</span>
-<span id="cb2-2"><a href="#cb2-2"></a>x&lt;-xy<span class="op">$</span>X</span>
-<span id="cb2-3"><a href="#cb2-3"></a>y&lt;-xy<span class="op">$</span>Y</span>
-<span id="cb2-4"><a href="#cb2-4"></a>B&lt;-xy<span class="op">$</span>B</span>
-<span id="cb2-5"><a href="#cb2-5"></a>B_hat&lt;-<span class="kw">LRL</span>(x,y)</span>
-<span id="cb2-6"><a href="#cb2-6"></a>image_B&lt;-<span class="cf">function</span>(B_hat){</span>
-<span id="cb2-7"><a href="#cb2-7"></a>  <span class="kw">image</span>(B_hat[[<span class="dv">1</span>]])</span>
-<span id="cb2-8"><a href="#cb2-8"></a>  <span class="kw">image</span>(B_hat[[<span class="dv">2</span>]])</span>
-<span id="cb2-9"><a href="#cb2-9"></a>  <span class="kw">image</span>(B_hat[[<span class="dv">3</span>]])</span>
-<span id="cb2-10"><a href="#cb2-10"></a>  <span class="kw">image</span>(B_hat[[<span class="dv">4</span>]])</span>
-<span id="cb2-11"><a href="#cb2-11"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">library</span>(SC19056)</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="kw">data</span>(<span class="st">&quot;xy&quot;</span>)</span>
+<span id="cb2-3"><a href="#cb2-3"></a>x&lt;-xy<span class="op">$</span>X</span>
+<span id="cb2-4"><a href="#cb2-4"></a>y&lt;-xy<span class="op">$</span>Y</span>
+<span id="cb2-5"><a href="#cb2-5"></a>B&lt;-xy<span class="op">$</span>B</span>
+<span id="cb2-6"><a href="#cb2-6"></a>B_hat&lt;-<span class="kw">LRL</span>(x,y)</span>
+<span id="cb2-7"><a href="#cb2-7"></a>image_B&lt;-<span class="cf">function</span>(B_hat){</span>
+<span id="cb2-8"><a href="#cb2-8"></a>  <span class="kw">image</span>(B_hat[[<span class="dv">1</span>]])</span>
+<span id="cb2-9"><a href="#cb2-9"></a>  <span class="kw">image</span>(B_hat[[<span class="dv">2</span>]])</span>
+<span id="cb2-10"><a href="#cb2-10"></a>  <span class="kw">image</span>(B_hat[[<span class="dv">3</span>]])</span>
+<span id="cb2-11"><a href="#cb2-11"></a>  <span class="kw">image</span>(B_hat[[<span class="dv">4</span>]])</span>
+<span id="cb2-12"><a href="#cb2-12"></a>}</span></code></pre></div>
 <p>We use the function <em>image_B</em> to show the real parameter <em>B</em> and the LRL estimation <em>B_hat</em>.</p>
 <div id="real-parameter-b" class="section level3">
 <h3>Real parameter <em>B</em>:</h3>

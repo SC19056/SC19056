@@ -11,6 +11,7 @@ Encoding: UTF-8
 Depends: R (>= 3.5.0)
 VignetteBuilder: knitr
 RoxygenNote: 7.0.2
-Imports:knitr,DAAG,bootstrap,caret,mvtnorm,rootSolve,Rcpp,ggplot2,microbenchmark,scales,Ball,MASS,boot,xtable,parallel
-URL:https://github.com/Caa2019/SC19056
-BugReports:https://github.com/Caa2019/SC19056/issues
+Imports:Rcpp (>= 0.12.16),knitr,DAAG,bootstrap,caret,mvtnorm,rootSolve,ggplot2,microbenchmark,scales,Ball,MASS,boot,xtable,parallel
+LinkingTo: Rcpp
+URL:https://github.com/SC19056/SC19056
+BugReports:https://github.com/SC19056/SC19056/issues

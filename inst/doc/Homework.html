@@ -320,7 +320,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <span id="cb1-5"><a href="#cb1-5"></a>p&lt;-xtable<span class="op">::</span><span class="kw">xtable</span>((x))</span>
 <span id="cb1-6"><a href="#cb1-6"></a><span class="kw">print</span>(p,<span class="dt">type=</span><span class="st">&quot;html&quot;</span>)</span></code></pre></div>
 <!-- html table generated in R 3.6.2 by xtable 1.8-4 package -->
-<!-- Sat Dec 28 21:37:18 2019 -->
+<!-- Thu Jan 02 12:42:42 2020 -->
 <table border="1">
 <tr>
 <th>
@@ -604,7 +604,7 @@ M
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>p&lt;-xtable<span class="op">::</span><span class="kw">xtable</span>((exam_m)) </span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="kw">print</span>(p,<span class="dt">type=</span><span class="st">&quot;html&quot;</span>)</span></code></pre></div>
 <!-- html table generated in R 3.6.2 by xtable 1.8-4 package -->
-<!-- Sat Dec 28 21:37:18 2019 -->
+<!-- Thu Jan 02 12:42:42 2020 -->
 <table border="1">
 <tr>
 <th>
@@ -722,7 +722,7 @@ stu_id
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>p&lt;-xtable<span class="op">::</span><span class="kw">xtable</span>((exam_f)) </span>
 <span id="cb4-2"><a href="#cb4-2"></a><span class="kw">print</span>(p,<span class="dt">type=</span><span class="st">&quot;html&quot;</span>) </span></code></pre></div>
 <!-- html table generated in R 3.6.2 by xtable 1.8-4 package -->
-<!-- Sat Dec 28 21:37:18 2019 -->
+<!-- Thu Jan 02 12:42:42 2020 -->
 <table border="1">
 <tr>
 <th>
@@ -2370,7 +2370,7 @@ Extra challenge: get rid of the anonymous function by using [[ directly.</p>
 <span id="cb99-11"><a href="#cb99-11"></a>}</span>
 <span id="cb99-12"><a href="#cb99-12"></a><span class="kw">system.time</span>(cc&lt;-<span class="kw">mcsapply</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">100</span>,g))  </span></code></pre></div>
 <pre><code>## 用户 系统 流逝 
-## 0.00 0.02 0.92</code></pre>
+## 0.00 0.01 1.13</code></pre>
 <div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1"></a><span class="kw">vapply</span>(x,f,<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>))</span></code></pre></div>
 <pre><code>##         [,1]      [,2] [,3]
 ## [1,] 5.50000 25.000000 0.75
@@ -2384,7 +2384,7 @@ Extra challenge: get rid of the anonymous function by using [[ directly.</p>
 <div id="answer-8" class="section level2">
 <h2>Answer</h2>
 <div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="#cb103-1"></a><span class="co">#  R function</span></span>
-<span id="cb103-2"><a href="#cb103-2"></a><span class="kw">library</span>(Rcpp)</span>
+<span id="cb103-2"><a href="#cb103-2"></a><span class="kw">library</span>(SC19056)</span>
 <span id="cb103-3"><a href="#cb103-3"></a><span class="kw">library</span>(microbenchmark)</span>
 <span id="cb103-4"><a href="#cb103-4"></a>Rwms&lt;-<span class="cf">function</span>(sigma,x0,N){</span>
 <span id="cb103-5"><a href="#cb103-5"></a>x&lt;-<span class="kw">matrix</span>(<span class="ot">NA</span>,N,<span class="dv">2</span>);x[<span class="dv">1</span>,]&lt;-<span class="kw">c</span>(x0,<span class="dv">0</span>);u&lt;-<span class="kw">runif</span>(N)</span>
@@ -2400,34 +2400,12 @@ Extra challenge: get rid of the anonymous function by using [[ directly.</p>
 <span id="cb103-15"><a href="#cb103-15"></a>}</span>
 <span id="cb103-16"><a href="#cb103-16"></a><span class="kw">return</span>(x)</span>
 <span id="cb103-17"><a href="#cb103-17"></a>}</span>
-<span id="cb103-18"><a href="#cb103-18"></a><span class="co"># Cpp function</span></span>
-<span id="cb103-19"><a href="#cb103-19"></a><span class="kw">cppFunction</span>(<span class="st">&#39;NumericMatrix RwmsC(double sigma, double x_0,int N) {</span></span>
-<span id="cb103-20"><a href="#cb103-20"></a><span class="st">  NumericMatrix x(N,2);</span></span>
-<span id="cb103-21"><a href="#cb103-21"></a><span class="st">  NumericVector U=runif(N,0,1);</span></span>
-<span id="cb103-22"><a href="#cb103-22"></a><span class="st">  x(0,0)=x_0;x(0,1)=0; </span></span>
-<span id="cb103-23"><a href="#cb103-23"></a><span class="st">  double y=0;double u=0;double c1;double c2;</span></span>
-<span id="cb103-24"><a href="#cb103-24"></a><span class="st">  for (int i=1;i &lt; N;i++){</span></span>
-<span id="cb103-25"><a href="#cb103-25"></a><span class="st">    y = rnorm(1,x(i-1,0),sigma)[0];</span></span>
-<span id="cb103-26"><a href="#cb103-26"></a><span class="st">    u = U[i];</span></span>
-<span id="cb103-27"><a href="#cb103-27"></a><span class="st">    c1=0.5*exp(-abs(y));</span></span>
-<span id="cb103-28"><a href="#cb103-28"></a><span class="st">    c2=0.5*exp(-abs(x(i-1,0)));</span></span>
-<span id="cb103-29"><a href="#cb103-29"></a><span class="st">    if (u &lt;= c1/c2){</span></span>
-<span id="cb103-30"><a href="#cb103-30"></a><span class="st">      x(i,0) = y;</span></span>
-<span id="cb103-31"><a href="#cb103-31"></a><span class="st">      x(i,1)=1;</span></span>
-<span id="cb103-32"><a href="#cb103-32"></a><span class="st">    }</span></span>
-<span id="cb103-33"><a href="#cb103-33"></a><span class="st">    else{</span></span>
-<span id="cb103-34"><a href="#cb103-34"></a><span class="st">      x(i,0)=x(i-1,0);</span></span>
-<span id="cb103-35"><a href="#cb103-35"></a><span class="st">      x(i,1)=0;</span></span>
-<span id="cb103-36"><a href="#cb103-36"></a><span class="st">    }</span></span>
-<span id="cb103-37"><a href="#cb103-37"></a><span class="st">    }</span></span>
-<span id="cb103-38"><a href="#cb103-38"></a><span class="st">  return x;</span></span>
-<span id="cb103-39"><a href="#cb103-39"></a><span class="st">  }&#39;</span>)</span>
-<span id="cb103-40"><a href="#cb103-40"></a><span class="co"># Question one:</span></span>
-<span id="cb103-41"><a href="#cb103-41"></a>ts &lt;-<span class="st"> </span><span class="kw">microbenchmark</span>(<span class="dt">R=</span><span class="kw">Rwms</span>(<span class="dv">1</span>,<span class="dv">25</span>,<span class="dv">10000</span>), <span class="dt">Cpp=</span><span class="kw">RwmsC</span>(<span class="dv">1</span>,<span class="dv">25</span>,<span class="dv">10000</span>))</span>
-<span id="cb103-42"><a href="#cb103-42"></a><span class="kw">summary</span>(ts)[,<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">6</span>)]</span></code></pre></div>
-<pre><code>##   expr       lq   median      uq
-## 1    R 19.97815 20.98795 26.1594
-## 2  Cpp  1.23525  1.26285  1.3005</code></pre>
+<span id="cb103-18"><a href="#cb103-18"></a><span class="co"># Question one:</span></span>
+<span id="cb103-19"><a href="#cb103-19"></a>ts &lt;-<span class="st"> </span><span class="kw">microbenchmark</span>(<span class="dt">R=</span><span class="kw">Rwms</span>(<span class="dv">1</span>,<span class="dv">25</span>,<span class="dv">10000</span>), <span class="dt">Cpp=</span><span class="kw">RwmsC</span>(<span class="dv">1</span>,<span class="dv">25</span>,<span class="dv">10000</span>))</span>
+<span id="cb103-20"><a href="#cb103-20"></a><span class="kw">summary</span>(ts)[,<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">6</span>)]</span></code></pre></div>
+<pre><code>##   expr      lq    median        uq
+## 1    R 21.0531 22.041652 25.799751
+## 2  Cpp  1.2832  1.313951  1.396702</code></pre>
 <div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="#cb105-1"></a><span class="co"># Question two:</span></span>
 <span id="cb105-2"><a href="#cb105-2"></a><span class="kw">set.seed</span>(<span class="dv">13</span>)</span>
 <span id="cb105-3"><a href="#cb105-3"></a>c&lt;-<span class="kw">Rwms</span>(<span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">10000</span>)</span>

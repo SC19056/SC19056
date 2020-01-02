@@ -879,9 +879,9 @@ mcsapply<-function(k,f){
 system.time(cc<-mcsapply(1:100,g))  
 vapply(x,f,c(1,2,3))
 
-## -----------------------------------------------------------------------------
+## ----eval=TRUE----------------------------------------------------------------
 #  R function
-library(Rcpp)
+library(SC19056)
 library(microbenchmark)
 Rwms<-function(sigma,x0,N){
 x<-matrix(NA,N,2);x[1,]<-c(x0,0);u<-runif(N)
@@ -897,28 +897,6 @@ x[i,1] <- x[i-1,1];x[i,2]<-0
 }
 return(x)
 }
-# Cpp function
-cppFunction('NumericMatrix RwmsC(double sigma, double x_0,int N) {
-  NumericMatrix x(N,2);
-  NumericVector U=runif(N,0,1);
-  x(0,0)=x_0;x(0,1)=0; 
-  double y=0;double u=0;double c1;double c2;
-  for (int i=1;i < N;i++){
-    y = rnorm(1,x(i-1,0),sigma)[0];
-    u = U[i];
-    c1=0.5*exp(-abs(y));
-    c2=0.5*exp(-abs(x(i-1,0)));
-    if (u <= c1/c2){
-      x(i,0) = y;
-      x(i,1)=1;
-    }
-    else{
-      x(i,0)=x(i-1,0);
-      x(i,1)=0;
-    }
-    }
-  return x;
-  }')
 # Question one:
 ts <- microbenchmark(R=Rwms(1,25,10000), Cpp=RwmsC(1,25,10000))
 summary(ts)[,c(1,3,5,6)]

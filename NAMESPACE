@@ -2,7 +2,10 @@
 
 export(EMg)
 export(LRL)
+export(RwmsC)
+importFrom(Rcpp,evalCpp)
 importFrom("grDevices", "rainbow")
 importFrom("graphics", "legend", "par", "plot", "points", "xinch",
                "yinch")
 importFrom("mvtnorm","dmvnorm")
+useDynLib(SC19056)
