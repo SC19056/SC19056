@@ -26,6 +26,6 @@ Low-Rank Linear regression for matrix responses.
 data(xy)
 x<-xy$X
 y<-xy$Y
-B_hat<-LRL(x,Y)
+B_hat<-LRL(x,y)
 }
 }
